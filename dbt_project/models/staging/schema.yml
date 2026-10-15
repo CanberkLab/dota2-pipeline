@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_public_matches
+    description: Typed public matches with a data quality verdict per row.
+    columns:
+      - name: match_id
+        tests: [unique, not_null]
+      - name: is_valid
+        tests: [not_null]
+
+  - name: stg_heroes
+    columns:
+      - name: hero_id
+        tests: [unique, not_null]

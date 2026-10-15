@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: Tables loaded by src/dota_pipeline/load.py from the landing zone.
+    tables:
+      - name: public_matches
+        description: Sample of public ladder matches (OpenDota /publicMatches), de-duplicated on match_id.
+      - name: heroes_snapshots
+        description: Daily snapshots of the hero list (OpenDota /heroes).

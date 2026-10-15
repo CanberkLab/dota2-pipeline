@@ -1,0 +1,24 @@
+[project]
+name = "dota-pipeline"
+version = "0.1.0"
+description = "End-to-end data pipeline for Dota 2 public match data (OpenDota API)"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "duckdb>=1.0",
+    "requests>=2.31",
+    "pandas>=2.0",
+    "dbt-core>=1.10,<1.12",
+    "dbt-duckdb>=1.10,<1.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+dashboard = ["streamlit>=1.50"]
+airflow = ["apache-airflow>=2.9"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,13 @@
+data/raw/*
+data/warehouse/*
+!data/raw/.gitkeep
+!data/warehouse/.gitkeep
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+logs/
+__pycache__/
+*.egg-info/
+.venv/
+.pytest_cache/
+.env

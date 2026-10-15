@@ -1,0 +1,25 @@
+name: dota
+version: "1.0.0"
+config-version: 2
+profile: dota
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+vars:
+  min_pair_games: 30   # hero pairs with fewer games are too noisy to rank
+
+models:
+  dota:
+    staging:
+      +materialized: view
+      +schema: staging
+    marts:
+      +materialized: table
+      +schema: marts
+
+seeds:
+  dota:
+    +schema: reference

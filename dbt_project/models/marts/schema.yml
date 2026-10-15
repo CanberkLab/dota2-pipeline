@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: dim_heroes
+    columns:
+      - name: hero_id
+        tests: [unique, not_null]
+
+  - name: fct_matches
+    description: One row per valid public match.
+    columns:
+      - name: match_id
+        tests: [unique, not_null]
+
+  - name: fct_match_heroes
+    description: One row per match x hero (10 per match).
+    columns:
+      - name: match_hero_key
+        tests: [unique, not_null]
+      - name: side
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['radiant', 'dire']
+      - name: hero_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_heroes')
+                field: hero_id
+              config:
+                severity: warn   # a brand-new hero may be missing from an old snapshot
+
+  - name: mart_hero_winrate
+    columns:
+      - name: hero_id
+        tests: [unique, not_null]
